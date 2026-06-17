@@ -30,6 +30,9 @@ const Home = () => {
           <button className="btn-hero" onClick={() => navigate('/courses')}>
             Explore Courses <FiArrowRight />
           </button>
+          <button className="btn-hero btn-hero-secondary" onClick={() => navigate('/activity')}>
+            View Activity Profile
+          </button>
         </div>
         <div className="hero-image">
           <div className="hero-illustration">

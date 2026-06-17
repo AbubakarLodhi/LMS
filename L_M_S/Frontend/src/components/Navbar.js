@@ -29,6 +29,9 @@ const Navbar = () => {
           <Link to="/admin/courses" className="nav-link" onClick={() => setIsOpen(false)}>
             Admin
           </Link>
+          <Link to="/activity" className="nav-link" onClick={() => setIsOpen(false)}>
+            Activity
+          </Link>
         </div>
 
         <div className="hamburger" onClick={toggleMenu}>

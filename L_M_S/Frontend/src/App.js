@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/globals.css';
@@ -7,17 +7,22 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import CourseList from './pages/CourseList';
 import CourseDetail from './pages/CourseDetail';
+import AllActivity from './pages/AllActivity';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isActivityPage = location.pathname === '/activity';
+
   return (
-    <Router>
-      <Navbar />
+    <>
+      {!isActivityPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<CourseList isAdmin={false} />} />
         <Route path="/admin/courses" element={<CourseList isAdmin={true} />} />
         <Route path="/course/:courseId" element={<CourseDetail isAdmin={false} />} />
         <Route path="/admin/course/:courseId" element={<CourseDetail isAdmin={true} />} />
+        <Route path="/activity" element={<AllActivity />} />
       </Routes>
       <ToastContainer
         position="bottom-right"
@@ -30,6 +35,14 @@ function App() {
         draggable
         pauseOnHover
       />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
